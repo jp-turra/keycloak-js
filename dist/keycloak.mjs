@@ -753,7 +753,10 @@ function Keycloak (config) {
 
             params += '&client_id=' + encodeURIComponent(kc.clientId);
             params += '&redirect_uri=' + oauth.redirectUri;
-            params += '&client_secret' + encodeURIComponent(kc.clientSecret);
+            
+            if (kc.clientSecret) {
+                params += '&client_secret=' + encodeURIComponent(kc.clientSecret);
+            }
 
             if (oauth.pkceCodeVerifier) {
                 params += '&code_verifier=' + oauth.pkceCodeVerifier;
