@@ -637,6 +637,10 @@ function Keycloak (config) {
                     req.withCredentials = true;
 
                     params += '&client_id=' + encodeURIComponent(kc.clientId);
+                    
+                    if (kc.clientSecret) {
+                        params += '&client_secret=' + encodeURIComponent(kc.clientSecret);
+                    }
 
                     var timeLocal = new Date().getTime();
 
