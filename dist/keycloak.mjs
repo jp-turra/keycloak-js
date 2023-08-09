@@ -615,7 +615,7 @@ function Keycloak (config) {
         var exec = function() {
             var refreshToken = false;
             if (minValidity == -1) {
-                refreshToken = true;
+                refreshToken = false;
                 logInfo('[KEYCLOAK] Refreshing token: forced refresh');
             } else if (!kc.tokenParsed || kc.isTokenExpired(minValidity)) {
                 refreshToken = true;
