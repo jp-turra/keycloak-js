@@ -1687,8 +1687,10 @@
 	                    var expiresIn = (kc.tokenParsed['exp'] - (new Date().getTime() / 1000) + kc.timeSkew) * 1000;
 	                    logInfo('[KEYCLOAK] Token expires in ' + Math.round(expiresIn / 1000) + ' s');
 	                    if (expiresIn <= 0) {
+	                        logInfo('[KEYCLOAK] Token expired, notifying application');
 	                        kc.onTokenExpired();
 	                    } else {
+	                        logInfo('[KEYCLOAK] Setup token refresh in ' + Math.round(expiresIn / 1000) + ' s');
 	                        kc.tokenTimeoutHandle = setTimeout(kc.onTokenExpired, expiresIn);
 	                    }
 	                }
